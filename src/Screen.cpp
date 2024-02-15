@@ -1,13 +1,69 @@
 #include "Screen.h"
+#include <fstream>
+#include <iostream>
 
 
 Screen::Screen() 
-    : m_window(sf::VideoMode(1400, 800), "SFML Window")
+    : m_window(sf::VideoMode(1400, 800), "SFML Window"), 
+      m_key(None), m_rows(0), m_cols(0)
 {}
 //-----------------------------------------------
-void readFromFile() {
+void Screen::getFileName() {
 
-    int rows, cols;
+    std::ifstream file; 
+    file.open(m_fileName);
+    
+    while (file.is_open()) {
+        
+        std::string fileName;
+        std::getline(file, fileName);
+        getLevelFromFile(fileName);
+    }
+}
+//-----------------------------------------------
+void Screen::getLevelFromFile(std::string fileName) {
+
+    sf::Vector2f location;
+
+    std::ifstream file;
+    file.open(m_fileName);
+    std::string line;
+
+    if(file.is_open())
+       file >> m_rows >> m_cols;
+
+    while (file.is_open()) {
+        std::getline(file, line);
+        
+        for (auto character : line)
+            addObject(character, location);
+           
+    }
+}
+//-----------------------------------------------
+void Screen::addObject(char object, sf::Vector2f &location) {
+
+    switch (object) {
+        case '%': 
+            m_gameObjects.push_back(Mouse(location));
+            break;
+        case '^': 
+            break;
+        case 'D':
+            break;
+        case '#':
+            break;
+        case 'F':
+            break;
+        case '*': 
+            break;
+        case '$':
+            break:
+        case WHITESPACE:
+            location.x + = TILE_SIZE;
+            break;
+   
+    }
 }
 //-----------------------------------------------
 void Screen::playGmae() {
@@ -19,10 +75,10 @@ void Screen::playGmae() {
 //-----------------------------------------------
 void Screen::readImages() {
 
-    for (int i = 0; i < TOTAL_IMAGES; i++) {
-        auto img = sf::Texture();
-        img.loadFromFile(imgStrArr[i]);
-        m_textures.push_back(img);
+    for (auto imgStr : imgStrArr) {
+        auto imgTextur = sf::Texture();
+        imgTextur.loadFromFile(imgStr);
+        m_textures.push_back(imgTextur);
     }
         
 }
