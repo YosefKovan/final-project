@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <memory>
 #include "Consts.h"
 #include "GameObject.h"
 #include "Mouse.h"
@@ -26,6 +27,8 @@ private:
 	sf::RenderWindow m_window;
 	std::vector<sf::Texture> m_textures;
 	std::vector<sf::Sprite> m_sprites;
-	std::vector<GameObject> m_gameObjects;
+	 
+	std::vector<std::unique_ptr<Moving>> m_moving;
+	std::vector<std::unique_ptr<Static>> m_static;
 
 };

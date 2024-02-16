@@ -40,24 +40,31 @@ void Screen::getLevelFromFile(std::string fileName) {
            
     }
 }
+
 //-----------------------------------------------
 void Screen::addObject(char object, sf::Vector2f &location) {
 
     switch (object) {
         case '%': 
-            m_gameObjects.push_back(Mouse(location));
+            m_gameObjects[MOUSE].push_back(Mouse(location, m_sprites[MOUSE]));
             break;
         case '^': 
+            m_gameObjects[CAT].push_back(Cat(location, m_sprites[CAT]));
             break;
         case 'D':
+            m_gameObjects[DOOR].push_back(Door(location, m_sprites[DOOR]));
             break;
         case '#':
+            m_gameObjects[WALL].push_back(Wall(location, m_sprites[WALL]));
             break;
         case 'F':
+            m_gameObjects[KEY].push_back(Key(location, m_sprites[KEY]));
             break;
         case '*': 
+            m_gameObjects[CHEESE].push_back(Cheese(location, m_sprites[CHEESE]));
             break;
         case '$':
+            m_gameObjects[REWARD].push_back(Reward(location, m_sprites[REWARD]));
             break:
         case WHITESPACE:
             location.x + = TILE_SIZE;
@@ -80,6 +87,8 @@ void Screen::readImages() {
         imgTextur.loadFromFile(imgStr);
         m_textures.push_back(imgTextur);
     }
+
+
         
 }
 //-----------------------------------------------
@@ -99,7 +108,7 @@ void Screen::getEvent() {
                 break;
             case sf::Event::KeyReleased:
                 if (int key = getKey(event); key != None)
-                    m_key = None;
+                    m_key = None; 
                 break;
 
         }

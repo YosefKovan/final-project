@@ -1,13 +1,10 @@
-#include "Moving.h"
-#include <SFML/Graphics.hpp>
+#include "Static.h"
 
-class Cat : public Moving{
 
-public:
-	void move() override;
-	void draw() override;
+class Cheese : public Static {
 
 	void handleCollision(GameObject&) override;
+	void handleCollision(Mouse&) override;
 	void handleCollision(Mouse&) override;
 	void handleCollision(Cat&) override;
 	void handleCollision(Wall&) override;
@@ -15,5 +12,5 @@ public:
 	void handleCollision(Door&) override;
 	void handleCollision(Cheese&) override;
 	void handleCollision(Reward&) override;
-
+	
 };

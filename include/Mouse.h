@@ -1,12 +1,26 @@
 #include "Moving.h"
+#include <SFML/Graphics.hpp>
 
 class Mouse : public Moving{
 public:
 	Mouse();
 	void move() override;
-	void draw();
+	void draw() override;
+	
+	void handleCollision(GameObject&) override;
+	void handleCollision(Mouse&) override;
+	void handleCollision(Cat&) override;
+	void handleCollision(Wall&) override;
+	void handleCollision(Key&) override;
+	void handleCollision(Door&) override;
+	void handleCollision(Cheese&) override;
+    void handleCollision(Reward&) override;
+
+	int getTotalLives();
+	int getTotalScore();
 
 private:
 	int m_lives;
 	int m_score;
+	int m_keys;
 };
