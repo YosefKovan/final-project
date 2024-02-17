@@ -1,7 +1,7 @@
 #include "Mouse.h"
 
-Mouse::Mouse()
-	: m_lives(0), m_score(0)
+Mouse::Mouse(const sf::Vector2f& location, const sf::Sprite& sprite, const int& imgSize)
+	: m_lives(0), m_score(0), Moving(location, sprite, imgSize)
 {}
 //-------------------------------------------
 void Mouse::move() {
@@ -10,7 +10,7 @@ void Mouse::move() {
 }
 //-------------------------------------------
 void Mouse::draw() {
-
+	
 }
 //-------------------------------------------
 int Mouse::getTotalLives() {
@@ -39,7 +39,7 @@ void Mouse::handleCollision(Cat& obj) {
 	m_lives--;
 	
 	if (m_lives == 0)
-		isDisposed = true;
+		m_isDisposed = true;
 
 	obj.handleCollision(*this);
 }
@@ -53,7 +53,7 @@ void Mouse::handleCollision(Wall& ) {
 void Mouse::handleCollision(Key& obj) {
 
 	m_keys += 1;
-	obj.handleCollision(*this)
+	obj.handleCollision(*this);
 }
 //-------------------------------------------
 void Mouse::handleCollision(Door& ) {
@@ -71,7 +71,7 @@ void Mouse::handleCollision(Door& ) {
 //-------------------------------------------
 void Mouse::handleCollision(Cheese& ) {
 
-	m_score + = 5; //change to the actual amount
+	m_score += 5; //change to the actual amount
 
 }
 //-------------------------------------------

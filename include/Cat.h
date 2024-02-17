@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Moving.h"
 #include <SFML/Graphics.hpp>
 

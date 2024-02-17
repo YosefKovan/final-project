@@ -1,9 +1,11 @@
+#pragma once
+
 #include "Moving.h"
 #include <SFML/Graphics.hpp>
 
 class Mouse : public Moving{
 public:
-	Mouse();
+	Mouse(const sf::Vector2f&, const sf::Sprite&, const int&);
 	void move() override;
 	void draw() override;
 	

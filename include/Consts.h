@@ -1,10 +1,12 @@
+#pragma once
+
 #include <SFML/Graphics.hpp>
 #include <string>
 
 
 enum Arrows { None, Left, Right, Up, Down };
 
-enum Characters {Mouse, Cat, Door, Wall, Key, Cheese, Reward, WHITESPACE};
+enum Characters {MOUSE, CAT, DOOR, WALL, KEY, CHEESE, REWARD, WHITESPACE};
 //-----------------------------------
 
 //std::string charactersArr[7] = { "Mouse","Cat","Door","Wall","Key","Cheese", "Reward"};

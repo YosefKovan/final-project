@@ -2,10 +2,10 @@
 
 #include "GameObject.h"
 
-class Cheese : public GameObject {
+class Reward : public GameObject {
 
 public:
-	Cheese(const sf::Vector2f& location, const sf::Sprite& sprite, const int& imgSize)
+	Reward(const sf::Vector2f& location, const sf::Sprite& sprite, const int& imgSize)
 		: GameObject(location, sprite, imgSize) {}
 
 	void handleCollision(GameObject& obj) override {

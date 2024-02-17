@@ -1,8 +1,8 @@
 #include "Moving.h"
 
-Moving::Moving(const sf::Vector2f& location)
-	:m_prevPos(location), m_curPos(location),
-	 m_startPos(location), m_objSize(40), m_collision(false)
+Moving::Moving(const sf::Vector2f& location, const sf::Sprite& sprite, const int& imgSize)
+	:m_prevPos(location), m_curPos(location), m_collision(false), 
+	 GameObject(location, sprite, imgSize)
 {}
 //-------------------------------------------
 void Moving::resetPosition() {

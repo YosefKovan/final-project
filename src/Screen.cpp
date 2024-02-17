@@ -23,7 +23,7 @@ void Screen::getFileName() {
 //-----------------------------------------------
 void Screen::getLevelFromFile(std::string fileName) {
 
-    sf::Vector2f location;
+    sf::Vector2f location(0,0);
 
     std::ifstream file;
     file.open(m_fileName);
@@ -37,7 +37,8 @@ void Screen::getLevelFromFile(std::string fileName) {
         
         for (auto character : line)
             addObject(character, location);
-           
+        
+        location.y += TILE_SIZE;      
     }
 }
 
@@ -46,25 +47,25 @@ void Screen::addObject(char object, sf::Vector2f &location) {
 
     switch (object) {
         case '%': 
-            m_gameObjects[MOUSE].push_back(Mouse(location, m_sprites[MOUSE]));
+            m_moving.push_back(std::make_unique<Mouse>(location));
             break;
         case '^': 
-            m_gameObjects[CAT].push_back(Cat(location, m_sprites[CAT]));
+            m_moving.push_back(std::make_unique<Cat>(location));
             break;
         case 'D':
-            m_gameObjects[DOOR].push_back(Door(location, m_sprites[DOOR]));
+            m_static.push_back(std::make_unique<Door>(location));
             break;
         case '#':
-            m_gameObjects[WALL].push_back(Wall(location, m_sprites[WALL]));
+            m_static.push_back(std::make_unique<Wall>(location));
             break;
         case 'F':
-            m_gameObjects[KEY].push_back(Key(location, m_sprites[KEY]));
+            m_static.push_back(std::make_unique<Key>(location));
             break;
         case '*': 
-            m_gameObjects[CHEESE].push_back(Cheese(location, m_sprites[CHEESE]));
+            m_static.push_back(std::make_unique<Cheese>(location));
             break;
         case '$':
-            m_gameObjects[REWARD].push_back(Reward(location, m_sprites[REWARD]));
+            m_static.push_back(std::make_unique<Reward>(location));
             break:
         case WHITESPACE:
             location.x + = TILE_SIZE;
@@ -83,9 +84,9 @@ void Screen::playGmae() {
 void Screen::readImages() {
 
     for (auto imgStr : imgStrArr) {
-        auto imgTextur = sf::Texture();
-        imgTextur.loadFromFile(imgStr);
-        m_textures.push_back(imgTextur);
+        auto imgTexture = sf::Texture();
+        imgTexture.loadFromFile(imgStr);
+        m_textures.push_back(imgTexture);
     }
 
 

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <memory>
@@ -29,6 +31,6 @@ private:
 	std::vector<sf::Sprite> m_sprites;
 	 
 	std::vector<std::unique_ptr<Moving>> m_moving;
-	std::vector<std::unique_ptr<Static>> m_static;
+	std::vector<std::unique_ptr<GameObject>> m_static;
 
 };
