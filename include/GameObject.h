@@ -1,15 +1,15 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "Mouse.h"
-#include "Cat.h"
-#include "Static.h"
-#include "Door.h"
-#include "Wall.h"
-#include "Cheese.h"
-#include "Key.h"
-#include "Reward.h"
 
+class Mouse;
+class Cat;
+class Static;
+class Door;
+class Wall;
+class Cheese;
+class Key;
+class Reward;
 class GameObject {
 
 public:
