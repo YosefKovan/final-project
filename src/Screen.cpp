@@ -34,10 +34,12 @@ void Screen::getLevelFromFile(std::string fileName) {
 
     while (file.is_open()) {
         std::getline(file, line);
-        
-        for (auto character : line)
-            addObject(character, location);
-        
+
+        for (auto character : line) {
+            addObject(character, location); //for whitespace it will only increase the x.
+            location.x += TILE_SIZE;
+        }
+
         location.y += TILE_SIZE;      
     }
 }
@@ -66,11 +68,7 @@ void Screen::addObject(char object, sf::Vector2f &location) {
             break;
         case '$':
             m_static.push_back(std::make_unique<Reward>(location));
-            break:
-        case WHITESPACE:
-            location.x + = TILE_SIZE;
             break;
-   
     }
 }
 //-----------------------------------------------

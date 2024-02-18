@@ -7,7 +7,7 @@ class Moving : public GameObject {
 
 public:
 	Moving(const sf::Vector2f &location ,const sf::Sprite&, const int&);
-	virtual void move() = 0;
+	virtual void move(int direction) = 0;
 	void resetPosition();
 	bool catMouseCollision();
 

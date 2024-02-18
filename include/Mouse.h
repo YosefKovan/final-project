@@ -6,8 +6,8 @@
 class Mouse : public Moving{
 public:
 	Mouse(const sf::Vector2f&, const sf::Sprite&, const int&);
-	void move() override;
-	void draw() override;
+	void move(int direction) override;
+	void draw(sf::RenderWindow& window) override;
 	
 	void handleCollision(GameObject&) override;
 	void handleCollision(Mouse&) override;

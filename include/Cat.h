@@ -6,8 +6,8 @@
 class Cat : public Moving{
 
 public:
-	void move() override;
-	void draw() override;
+	void move(int direction) override;
+	void draw(sf::RenderWindow& window) override;
 
 	void handleCollision(GameObject&) override;
 	void handleCollision(Mouse&) override;
