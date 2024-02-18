@@ -5,12 +5,27 @@ Mouse::Mouse(const sf::Vector2f& location, const sf::Sprite& sprite, const int& 
 {}
 //-------------------------------------------
 void Mouse::move() {
-
+	switch (Screen.m_key)
+	{
+	case Left:
+		sprite.move(-10, 0);
+		break;
+	case Right:
+		sprite.move(10, 0);
+		break;
+	case Up:
+		sprite.move(0, -10);
+		break;
+	case Down:
+		sprite.move(0, 10);
+		break;
+	}
 	
 }
 //-------------------------------------------
 void Mouse::draw() {
-	
+	sf::Sprite sprite(*texture, sf::IntRect(10, 10, 10, 20));
+	renderWindow.draw(sprite);
 }
 //-------------------------------------------
 int Mouse::getTotalLives() {
