@@ -72,7 +72,7 @@ void Screen::addObject(char object, sf::Vector2f &location) {
     }
 }
 //-----------------------------------------------
-void Screen::playGmae() {
+void Screen::playGame() {
 
     while (m_window.isOpen()) {
         getEvent();

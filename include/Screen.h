@@ -13,7 +13,7 @@ class Screen {
 public:
 	Screen();
 	Screen() = default;
-	void playGmae();
+	void playGame();
 
 private:
 	void readImages();
