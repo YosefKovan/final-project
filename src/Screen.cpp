@@ -66,15 +66,15 @@ void Screen::addObject(char object, sf::Vector2f &location) {
             break;
         case '$':
             m_static.push_back(std::make_unique<Reward>(location));
-            break:
+            break;
         case WHITESPACE:
-            location.x + = TILE_SIZE;
+            location.x += TILE_SIZE;
             break;
    
     }
 }
 //-----------------------------------------------
-void Screen::playGmae() {
+void Screen::playGame() {
 
     while (m_window.isOpen()) {
         getEvent();
